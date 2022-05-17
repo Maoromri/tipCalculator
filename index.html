@@ -19,6 +19,7 @@
         text-align: center;
         background-color: navy;
         color: beige;
+        font-weight: bold;
       }
       .user-input-container {
         margin: 50px;
@@ -31,14 +32,13 @@
   <body>
     <div class="container">
       <div class="user-input-container">
-        <div class="d-inline p-2 bg-primary text-white">סכום החשבון לתשלום</div>
+        <div class="d-inline p-1 text-white primary border border-5">סכום החשבון לתשלום</div>
 
         <!-- <label for="user-input"> סכום החשבון לתשלום</label> -->
         <input type="number" id="user-input" /> <br />
-        <div class="d-inline p-2 bg-primary text-white">
-          גובה אחוז הטיפ הרצוי
-        </div>
-        <input type="number" id="precent-input" max="3" maxlength="3" /><br />
+      </div>
+        <div class="d-inline p-1 text-white m-1 border border-5">גובה אחוז הטיפ הרצוי</div>
+        <input type="number" id="precent-input" /><br />
         <br />
         <input
           class="btn btn-secondary"
@@ -65,12 +65,13 @@
         console.log(tipCalc);
         console.log(bill);
         let bills = `
-<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
-        the total amount bill+tip is: ${fullAmount}
-</button>
-<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
+        <button type="button" class="btn btn-primary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
         the tip: ${tipCalc} shekels (${precent}%) 
 </button>
+<button type="button" class="btn btn-warning" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
+        the total amount bill+tip is: ${fullAmount}
+</button>
+
 
                `;
         diver.innerHTML = bills;
