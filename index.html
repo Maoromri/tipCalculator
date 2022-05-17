@@ -49,8 +49,11 @@
       </div>
       <div class="total-container"></div>
     </div>
+
+    <div class="split-container"></div>
     <script>
       const diver = document.querySelector(".total-container");
+      const split = document.querySelector(".split-container");
       const billInput = document.getElementById("user-input");
       const tipPrecent = document.getElementById("precent-input");
       const btn = document.getElementById("button");
@@ -59,27 +62,64 @@
         return (bill * precent) / 100;
       };
 
-      calcTotalBill = function (bill, precent) {
+
+const diners = function  (){
+  const dinersNumbers = `<h2>לכמה סועדים אתם מעוניינים לחלק את החשבון ?</h2>
+
+
+ 
+ <select class="form-select-sm bg btn btn-outline-secondary text-white" aria-label="Default select example  ">
+  <option selected>אנא בחרו</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="1">4</option>
+  <option value="2">5</option>
+  <option value="3">6</option>
+</select>
+  `
+
+ split.innerHTML = dinersNumbers
+ return dinersNumbers
+}
+
+
+    const calcTotalBill = function (bill, precent) {
         let tipCalc = calTip(bill, precent);
         let fullAmount = tipCalc + Number(bill);
         console.log(tipCalc);
         console.log(bill);
         let bills = `
         <button type="button" class="btn btn-primary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
-        the tip: ${tipCalc} shekels (${precent}%) 
+<h6>סה"כ טיפ ${tipCalc}  ש"ח (${precent}%) אחוזים</h6>
 </button>
-<button type="button" class="btn btn-warning" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
-        the total amount bill+tip is: ${fullAmount}
-</button>
-
-
+<button type="button" class="btn btn-warning" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover"> 
+        <h6>סה"כ לתשלום כולל טיפ - ${fullAmount}  ש"ח</h6>
                `;
-        diver.innerHTML = bills;
+
+setTimeout(()=>{
+
+ diners();
+
+},3000)
+       return diver.innerHTML = bills;
       };
 
       btn.addEventListener("click", function () {
         calcTotalBill(billInput.value, tipPrecent.value);
       });
+
+// const diners = function  (calcTotalBill){
+//   let dinersNumbers = calcTotalBill(fullAmount) 
+// split.innerHTML = dinersNumbers;
+// }
+
+// diners();
+
+
+
+
+
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
